@@ -1,0 +1,59 @@
+Voice Smeralda V1 Part. 1/6
+Camerun-Voices On File in Santa Monica Studios
+By: Jason Cajas & Smeralda Accilio
+
+--------------------------
+Part 1
+Inicios de OPEN/BACK
+
+SM Voice: Iniciando Actualizaciones de Software y Hardware se le informa Esperar y continuar mas tarde.
+
+SM Voice: Desarollo de Programa en Curso, Se le recomienda no Apagar o reiniciar el sistema operativo.
+
+SM Voice: Visual Studio Code En Exportacion por favor Espere.
+
+SM voice: Sistemas en Linea y a su disposición comienze.
+
+SM Voice: SAI informa todos los archivos estan en ejecucion y listo para ser desarollados se le recomienda no intervenir si no es un Developer DS.
+
+SM Voice: SAI al Habla, requiere reconocimento de Voz o Datos Biometricos de los Ownes Especialisados.
+
+SM Voice: SAI En Codex Gracias por su Tiempo.
+
+SM Voice: Por Favor Seleccione Los Idiomas En opciones a continuacion, Español, Ingles, Portugues Y Japones.
+
+SM Voice: Bienvenido Antes de Continuar se le advierte que si intenta Robar los archivos su PC-Escritorio o Portatil seran blokeados. 
+
+SM Voice: Mi Nombre es SMRALDA y Estare aqui para ayudarte.
+
+
+
+
+
+
+
+Embark Studios & Santa Monica Studios
+
+/// This is a WIP example for how the rustified wrappers lets your reduced the
+/// amount of unsafe in your code, and make it clearer where we cannot abstract
+/// away the underlying dangers.
+///
+/// Some of these will go away over time, when we add abstractions for Material
+/// and Geometry, while some will remain for performance such as
+/// `get_rigid_actor_unchecked`.
+///
+/// The overall goal is to maintain a close mapping to the underlying PhysX API
+/// while improving safety and reliability of the code.
+
+/// Many of the main types in PhysX have a userData *mut c_void field.
+/// Representing this safely in Rust requires generics everywhere,
+/// and pre-defining all the generic parameters makes things more usable.
+type PxMaterial = physx::material::PxMaterial<()>;
+type PxShape = physx::shape::PxShape<(), PxMaterial>;
+type PxArticulationLink = physx::articulation_link::PxArticulationLink<(), PxShape>;
+type PxRigidStatic = physx::rigid_static::PxRigidStatic<(), PxShape>;
+type PxRigidDynamic = physx::rigid_dynamic::PxRigidDynamic<(), PxShape>;
+type PxArticulation = physx::articulation::PxArticulation<(), PxArticulationLink>;
+type PxArticulationReducedCoordinate =
+    physx::articulation_reduced_coordinate::PxArticulationReducedCoordinate<(), PxArticulationLink>;
+type PxScene = physx::scene::PxScene<
